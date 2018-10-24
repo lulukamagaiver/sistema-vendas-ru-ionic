@@ -1,6 +1,7 @@
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { SignupPage } from '../signup/signup';
 
 /**
  * Generated class for the LoginPage page.
@@ -27,7 +28,8 @@ export class LoginPage {
   }
 
   signup() {
-    this.makeToast("Não Possuo Cadastro");
+    this.navCtrl.push(SignupPage);
+    // this.makeToast("Não Possuo Cadastro");
   }
 
   forgotPassword() {
