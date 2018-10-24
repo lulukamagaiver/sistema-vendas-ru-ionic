@@ -1,17 +1,52 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+    <ion-toolbar no-border-top>
+      
+      <button  ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+
+      <ion-title>RU+</ion-title>
+    
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <div end>
+      <span><h3>Saldo:</h3></span><br>
+      <span class="right"><h1>R$: {{wallet}}</h1></span>
+  </div> 
+
+  <ion-list>
+      <ion-list-header>
+        Histórico
+      </ion-list-header>
+  
+      <ion-item *ngFor="let item of history" >
+        <ion-label>{{item['item']}}</ion-label>
+        <div item-content>
+          R$ {{item['valor']}}
+        </div>
+      </ion-item>
+  </ion-list>
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar no-border-top>
+    <ion-segment>
+      
+      <ion-segment-button value="restaurant">
+        <ion-icon name='restaurant'></ion-icon>
+      </ion-segment-button>
+
+      <ion-segment-button value="buy">
+          <ion-icon name='cart'></ion-icon>
+      </ion-segment-button>
+
+      <ion-segment-button value="profile">
+          <ion-icon name='contact'></ion-icon>
+      </ion-segment-button>
+    
+    </ion-segment>
+  </ion-toolbar>  
+</ion-footer>
