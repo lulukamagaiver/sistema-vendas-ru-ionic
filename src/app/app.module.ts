@@ -1,5 +1,5 @@
-import { SignupPage } from './../pages/signup/signup';
-import { LoginPage } from './../pages/login/login';
+import { SignupPageModule } from './../pages/signup/signup.module';
+import { LoginPageModule } from './../pages/login/login.module';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -20,13 +20,13 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     AboutPage,
     ContactPage,
     HomePage,
-    LoginPage,
-    SignupPage,
     TabsPage,
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    LoginPageModule,
+    SignupPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,8 +34,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     AboutPage,
     ContactPage,
     HomePage,
-    LoginPage,
-    SignupPage,
     TabsPage
   ],
   providers: [

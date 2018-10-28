@@ -6,26 +6,54 @@
 -->
 
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
+    <ion-navbar>
+      <ion-title>
+        Cadastro de Usuário
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
   
-  <ion-list>
-
-    <ion-item>
-      <ion-label fixed>Código</ion-label>
-      <ion-input type="text" value="" [(ngModel)]="num" placeholder="Código de Barras"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <button ion-button (click)="scan()">Escanear</button>
-    </ion-item>
+  <ion-content padding>
+    <form [formGroup]="userForm">
+      
+      <ion-item>
+          <ion-label stacked>Nome Completo</ion-label>
+          <ion-input formControlName="name" placeholder="Informe seu nome" type="text"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label stacked>Email Institucional</ion-label>
+        <ion-input formControlName="email" placeholder="Informe seu email da UEA" type="text"></ion-input>
+      </ion-item>
   
-  </ion-list>
+      <ion-item>
+        <ion-label stacked>Senha</ion-label>
+        <ion-input formControlName="password" placeholder="Escolha uma senha" type="password"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>Confirmação de Senha</ion-label>
+        <ion-input formControlName="password_confirm" placeholder="Informe novamente a senha" type="password"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>Carteira de Estudante UEA</ion-label>
+        <ion-input disabled formControlName="barcode" [(ngModel)]="barcode" placeholder="Código de barras" type="text"></ion-input>
+        <button item-end ion-button color="light" (click)="barcodeScan()">Escanear</button>
+      </ion-item>
+    
+    </form>
 
-</ion-content>
+    <ion-buttons end style="margin-top: 25px">  
+        <button end ion-button small color="light" (click)="goBack()">
+            Cancelar
+        </button>
+        
+        <button end ion-button small (click)="createUser()">  
+            Cadastrar
+        </button>
+    </ion-buttons>
+
+  </ion-content>
+  
+  
