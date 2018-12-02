@@ -1,52 +1,57 @@
 <ion-header>
-    <ion-toolbar no-border-top>
-      
-      <button  ion-button icon-only menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-
-      <ion-title>RU+</ion-title>
-    
-    </ion-toolbar>
+  <dynamic-header [title]="'Home'"></dynamic-header>
 </ion-header>
 
 <ion-content padding>
+  <div>
+    <h4>Bem vindo, {{user['nome']}}.</h4>
+  </div><br>
+  
   <div end>
-      <span><h3>Saldo:</h3></span><br>
+      <span><h3>Saldo:</h3></span>
       <span class="right"><h1>R$: {{wallet}}</h1></span>
   </div> 
 
   <ion-list>
-      <ion-list-header>
-        Histórico
+      <ion-list-header text-center>
+        <b>Histórico de Compras</b>
       </ion-list-header>
   
-      <ion-item *ngFor="let item of history" >
-        <ion-label>{{item['item']}}</ion-label>
+      <ion-item *ngFor="let item of history">  
+        <ion-label>
+            <h2>{{item['item']}}</h2>
+            <p>{{item['data'].toLocaleDateString('pt-BR')}}</p>
+        </ion-label>
         <div item-content>
           R$ {{item['valor']}}
         </div>
       </ion-item>
   </ion-list>
 
+  <ion-fab bottom left [menuToggle]="menu">
+    <button ion-fab>
+      <ion-icon name="settings"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar no-border-top>
+  <ion-toolbar>
     <ion-segment>
       
-      <ion-segment-button value="restaurant">
+      <ion-segment-button value="restaurant" (click)="openMenuPage()">
         <ion-icon name='restaurant'></ion-icon>
       </ion-segment-button>
 
-      <ion-segment-button value="buy">
+      <ion-segment-button value="buy" (click)="openShopPage()">
           <ion-icon name='cart'></ion-icon>
       </ion-segment-button>
 
-      <ion-segment-button value="profile">
+      <ion-segment-button value="profile" (click)="openProfilePage()">
           <ion-icon name='contact'></ion-icon>
       </ion-segment-button>
     
     </ion-segment>
-  </ion-toolbar>  
+  </ion-toolbar>
 </ion-footer>

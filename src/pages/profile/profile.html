@@ -1,0 +1,33 @@
+<ion-header>
+  <dynamic-header [title]="'Perfil'"></dynamic-header>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-fab bottom left [menuToggle]="menu">
+      <button ion-fab>
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-fab>  
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-segment>
+      
+      <ion-segment-button value="restaurant" (click)="openMenuPage()">
+        <ion-icon name='restaurant'></ion-icon>
+      </ion-segment-button>
+
+      <ion-segment-button value="buy" (click)="openShopPage()">
+          <ion-icon name='cart'></ion-icon>
+      </ion-segment-button>
+
+      <ion-segment-button value="home" (click)="openHomePage()">
+          <ion-icon name='home'></ion-icon>
+      </ion-segment-button>
+    
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

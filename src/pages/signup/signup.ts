@@ -1,15 +1,10 @@
+import { RuapiProvider } from './../../providers/ruapi/ruapi';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomEmailValidator } from '../../validators/email';
-
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { MenuController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -20,7 +15,8 @@ export class SignupPage {
   public userForm: FormGroup;
   public barcode: any = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toastCtrl: ToastController, private barcodeScanner: BarcodeScanner) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toastCtrl: ToastController, 
+    private barcodeScanner: BarcodeScanner, private ruapiProvider: RuapiProvider, private menuCtrl: MenuController) {
 
     this.userForm = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -29,20 +25,13 @@ export class SignupPage {
       password_confirm: new FormControl('', Validators.required),
       barcode: new FormControl(this.barcode, Validators.required)
     });
+  }
   
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
-  }
-
   barcodeScan() {
     this.barcodeScanner.scan().then(data => {
-      // this is called when a barcode is found
       console.log(data.text);
       this.barcode = data.text;
     });      
-    // this.barcode = '1515080624';
   }
 
   createUser() {
@@ -67,6 +56,16 @@ export class SignupPage {
       this.goBack();
     }
   }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false, 'menu');
+    this.navCtrl.swipeBackEnabled = false;
+  }
+
+  ionViewWillLeave() {
+    this.menuCtrl.enable(true, 'menu');
+    this.navCtrl.swipeBackEnabled = true;
+  } 
 
   goBack() {
     this.navCtrl.pop();

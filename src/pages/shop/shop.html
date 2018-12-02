@@ -1,0 +1,31 @@
+<ion-header>
+  <dynamic-header [title]="'Comprar Créditos'"></dynamic-header>
+</ion-header>
+
+<ion-content padding>
+    <ion-fab bottom left [menuToggle]="menu">
+      <button ion-fab>
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-fab>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-segment>
+      
+      <ion-segment-button value="restaurant" (click)="openMenuPage()">
+        <ion-icon name='restaurant'></ion-icon>
+      </ion-segment-button>
+
+      <ion-segment-button value="buy" (click)="openHomePage()">
+          <ion-icon name='home'></ion-icon>
+      </ion-segment-button>
+
+      <ion-segment-button value="profile" (click)="openProfilePage()">
+          <ion-icon name='contact'></ion-icon>
+      </ion-segment-button>
+    
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

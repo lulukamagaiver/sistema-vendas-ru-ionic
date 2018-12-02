@@ -10,7 +10,7 @@
   
   <img src="assets/imgs/logo.png" class="logo"/>
 
-  <ion-grid >
+  <ion-grid>
     <ion-row>
       <ion-col center text-center>
         <ion-item>
@@ -25,18 +25,18 @@
     
     <ion-row>
       <ion-col center text-center>
-        <button ion-button color="lightText" (click)="signin()">Entrar</button>
+        <button ion-button color="lightText" (click)="signin()">
+          Entrar<ion-icon name="log-in" padding-left></ion-icon>
+        </button>
       </ion-col>
     </ion-row>
   
     <br>
 
-    <ion-item center text-center>
-        <a (click)=signup()>Não Possuo Cadastro</a>
-      </ion-item>
-
-    <ion-item center text-center>
-      <a (click)=forgotPassword()>Esqueceu sua Senha?</a>
+    <ion-item center text-center no-lines>
+      <a (click)=signup()>Não Possuo Cadastro</a> |
+      <a (click)=forgotPassword()>Esqueci Minha Senha</a>
     </ion-item>
+
   </ion-grid>
 </ion-content>

@@ -1,14 +1,9 @@
+import { RuapiProvider } from './../../providers/ruapi/ruapi';
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { MenuController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -16,24 +11,35 @@ import { SignupPage } from '../signup/signup';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toastCtrl: ToastController, 
+    private ruapiProvider: RuapiProvider, private menuCtrl: MenuController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false, 'menu');
+    this.navCtrl.swipeBackEnabled = false;
   }
+
+  ionViewWillLeave() {
+    this.menuCtrl.enable(true, 'menu');
+    this.navCtrl.swipeBackEnabled = true;
+  } 
 
   signin() {
-    this.navCtrl.push(HomePage);
+    if (this.ruapiProvider.validateUser()) {
+      this.navCtrl.setRoot(HomePage);
+    }
+    else {
+      this.makeToast('Usuário ou Senha Inválidos')
+    }
   }
 
   signup() {
     this.navCtrl.push(SignupPage);
-    // this.makeToast("Não Possuo Cadastro");
   }
 
   forgotPassword() {
-    this.makeToast("Equeceu Sua Senha?");
+    this.makeToast('Em Breve');
   }
 
   makeToast(message) {
@@ -45,5 +51,4 @@ export class LoginPage {
     
     toast.present();
   }
-
 }
