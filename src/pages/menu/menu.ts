@@ -3,6 +3,7 @@ import { ShopPage } from './../shop/shop';
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
 
 @IonicPage()
 @Component({
@@ -11,7 +12,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MenuPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private browser: InAppBrowser) {
+    const options: InAppBrowserOptions = {
+      zoom: 'no'
+    }
+    
+    let urls = ['http://ru1.uea.edu.br/index.php?dest=cardapio', 
+    'http://ru2.uea.edu.br/index.php?dest=cardapio', 
+    'http://ru3.uea.edu.br/index.php?dest=cardapio'];
+
+    this.browser.create(urls[0], '_self', options);
   }
 
   openHomePage() {

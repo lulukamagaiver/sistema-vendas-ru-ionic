@@ -1,3 +1,4 @@
+import { PurchaseConfirmationPage } from './../pages/purchase-confirmation/purchase-confirmation';
 import { SignupPage } from './../pages/signup/signup';
 import { ProfilePage } from './../pages/profile/profile';
 import { ShopPage } from './../pages/shop/shop';
@@ -21,6 +22,8 @@ import { RuapiProvider } from '../providers/ruapi/ruapi';
 
 import { HttpClientModule } from '@angular/common/http'; 
 import { HttpModule } from '@angular/http';
+import { Stripe } from '@ionic-native/stripe';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { HttpModule } from '@angular/http';
     MenuPage,
     HomePage,
     ProfilePage,
+    PurchaseConfirmationPage,
     ShopPage,
     SignupPage,
     TabsPage,
@@ -51,6 +55,7 @@ import { HttpModule } from '@angular/http';
     MenuPage,
     HomePage,
     ProfilePage,
+    PurchaseConfirmationPage,
     ShopPage,
     SignupPage,
     TabsPage,
@@ -60,7 +65,9 @@ import { HttpModule } from '@angular/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BarcodeScanner,
-    RuapiProvider
+    InAppBrowser,
+    RuapiProvider,
+    Stripe
   ]
 })
 export class AppModule {}

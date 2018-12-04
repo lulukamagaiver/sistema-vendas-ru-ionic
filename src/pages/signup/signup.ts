@@ -38,21 +38,21 @@ export class SignupPage {
     var re = /^([0-9]{1,10}|[a-zA-Z0-9_\-\.]{1,20}@uea\.edu\.br)$/;
 
     if (this.userForm.invalid && this.userForm.value['email'] === '') {
-      this.displayMessage('Por favor preencha todos os campos.');
+      this.makeToast('Por favor preencha todos os campos.');
     }
     else if (!re.test(String(this.userForm.value['email']).toLowerCase())) {
-      this.displayMessage('Por favor, insira um email da UEA.');
+      this.makeToast('Por favor, insira um email da UEA.');
     }
     else if (this.userForm.value['password'] !== this.userForm.value['password_confirm']) {
-      this.displayMessage('As senhas não conferem.');
+      this.makeToast('As senhas não conferem.');
     }
     else if (!re.test(String(this.userForm.value['email']).toLowerCase())) {
-      this.displayMessage('Por favor, insira um email da UEA.');
+      this.makeToast('Por favor, insira um email da UEA.');
     }
     else {
       // create user code goes here
 
-      this.displayMessage('Usuário criado com sucesso!');
+      this.makeToast('Usuário criado com sucesso!');
       this.goBack();
     }
   }
@@ -71,7 +71,7 @@ export class SignupPage {
     this.navCtrl.pop();
   }
 
-  displayMessage(message) {
+  makeToast(message) {
     const toast = this.toastCtrl .create({
       message: message,
       showCloseButton: true,

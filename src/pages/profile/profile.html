@@ -4,11 +4,82 @@
 
 <ion-content padding>
 
-    <ion-fab bottom left [menuToggle]="menu">
-      <button ion-fab>
-        <ion-icon name="settings"></ion-icon>
-      </button>
-    </ion-fab>  
+  <ion-label stacked>Atualizar Dados Cadastrais</ion-label>
+
+  <form [formGroup]="updateProfileForm">
+    <ion-row>
+      <ion-item >
+          <ion-label stacked>Email Institucional</ion-label>
+          <ion-input formControlName="email" placeholder="Email" disabled="true"></ion-input>
+      </ion-item>
+    </ion-row>
+    
+    <ion-row>
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input formControlName="name" placeholder="Nome" type="text"></ion-input>
+      </ion-item>
+    </ion-row>
+
+    <ion-row>
+      <ion-item>
+        <ion-label stacked>Apelido</ion-label>
+        <ion-input formControlName="nickname" placeholder="Apelido" type="text"></ion-input>
+      </ion-item>
+    </ion-row>
+
+    <ion-row>
+      <ion-item>
+        <ion-label stacked>CPF</ion-label>
+        <ion-input formControlName="document" placeholder="CPF" type="number"></ion-input>
+      </ion-item>
+    </ion-row>
+  
+   </form>
+
+  <ion-buttons end>
+    <button ion-button small style="margin-top: 25px" (click)="updateProfile()">  
+      Atualizar Dados
+    </button>
+  </ion-buttons>
+
+  <ion-label stacked>Atualização de Senha</ion-label>
+
+  <form [formGroup]="updatePasswordForm">
+    <ion-row>
+      <ion-item >
+          <ion-label stacked>Senha Atual</ion-label>
+          <ion-input formControlName="password" placeholder="Senha" type="password"></ion-input>
+      </ion-item>
+    </ion-row>
+    
+    <ion-row>
+      <ion-item>
+        <ion-label stacked>Nova Senha</ion-label>
+        <ion-input formControlName="new_password" placeholder="Nova Senha" type="password"></ion-input>
+      </ion-item>
+    </ion-row>
+
+    <ion-row>
+      <ion-item>
+        <ion-label stacked>Confirmação de Senha</ion-label>
+        <ion-input formControlName="confirm_new_password" placeholder="Confirme a Nova Senha" type="password"></ion-input>
+      </ion-item>
+    </ion-row>
+
+  </form>
+
+  <ion-buttons end>
+    <button ion-button small style="margin-top: 25px" (click)="updatePassword()">  
+      Atualizar Senha
+    </button>
+  </ion-buttons>
+
+  <ion-fab bottom left [menuToggle]="menu">
+    <button ion-fab>
+      <ion-icon name="settings"></ion-icon>
+    </button>
+  </ion-fab>  
 
 </ion-content>
 
