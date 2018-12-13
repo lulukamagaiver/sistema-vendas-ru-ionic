@@ -50,10 +50,20 @@ export class SignupPage {
       this.makeToast('Por favor, insira um email da UEA.');
     }
     else {
-      // create user code goes here
-
-      this.makeToast('Usuário criado com sucesso!');
-      this.goBack();
+      let request = {'alu_nome': this.userForm.value['name'],
+                     'alu_senha': this.userForm.value['password'],
+                     'alu_email': this.userForm.value['email'],
+                     'alu_carteirinha': this.userForm.value['barcode']};
+      
+      this.ruapiProvider.createStudent(request).then((response)=> {
+        if (response['status']) {
+          this.makeToast('Usuário criado com sucesso!');
+          this.goBack();
+        }
+        else {
+          this.makeToast('Ocorreu um erro, por favor tente novamente');
+        }
+      });
     }
   }
 

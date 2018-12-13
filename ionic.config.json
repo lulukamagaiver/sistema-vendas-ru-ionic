@@ -5,8 +5,8 @@
   },
   "proxies": [
     {
-      "path":"/",
-      "proxyUrl": "http://localhost/ru-api/web/"
+      "path":"/ru-api/web/",
+      "proxyUrl": "http://http://192.168.1.3/ru-api/web/"
     }
   ],
   "type": "ionic-angular"

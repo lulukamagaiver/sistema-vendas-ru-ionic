@@ -1,29 +1,52 @@
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class RuapiProvider {
 
-  private API_URL = 'http://localhost/SDP/web/';
+  // Change API_URL here and at 'ionic.config.json', when deploying aplication
+  private API_URL = 'http://192.168.1.3/ru-api/web/';
 
-  constructor(public http: Http) {
-    console.log('Hello RuapiProvider Provider');
-  }
+  constructor(public http: Http) {}
 
   validateUser() {
     return true;
   }
 
-  getHistory(request) {
-    let headers = new Headers();
-    headers.append('Content-Type','application/json');
+  getStudent(request) {
+    
+    return new Promise((resolve, reject) => {
+      let url = this.API_URL + 'aluno/get-aluno';
 
-    let options = new RequestOptions({headers: headers});
+      this.http.post(url, request).subscribe((result:any) => {  
+        resolve(result.json());
+      },(error) => {
+        reject(error.json());
+      });
+
+    });
+  }
+
+  createStudent(request) {
+    
+    return new Promise((resolve, reject) => {
+      let url = this.API_URL + 'aluno/create-aluno';
+
+      this.http.post(url, request).subscribe((result:any) => {  
+        resolve(result.json());
+      },(error) => {
+        reject(error.json());
+      });
+
+    });
+  }
+
+  getHistory(request) {
 
     return new Promise((resolve, reject) => {
-      let url = this.API_URL + 'historico/get_historico_por_aluno';
+      let url = this.API_URL + 'historico/get-historico-por-aluno';
 
-      this.http.post(url, request, options).subscribe((result:any) => {  
+      this.http.post(url, request).subscribe((result:any) => {  
         resolve(result.json());
       },(error) => {
         reject(error.json());
